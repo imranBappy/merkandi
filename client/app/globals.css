@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+p {
+  color: #495057;
+}
+
+.group-hover\:bg-m:hover,
+.hover\:bg-m:hover,
+.bg-m {
+  background: #299bcc;
+}
+.group-hover\:bg-mm:hover,
+.hover\:bg-mm:hover,
+.bg-mm {
+  background: #1f8ebe;
+}
+.group-hover\:bg-y:hover,
+.hover\:bg-y:hover,
+.bg-y {
+  background: #f29d00;
+}
+.group-hover\:bg-yy:hover,
+.hover\:bg-yy:hover,
+.bg-yy {
+  background: #cc8400;
+}
+
+.group-hover\:text-m:hover,
+.hover\:text-m:hover,
+.text-m {
+  color: #299bcc;
+}
+.group-hover\:text-mm:hover,
+.hover\:text-mm:hover,
+.text-mm {
+  color: #1f8ebe;
+}
+.group-hover\:text-y:hover,
+.hover\:text-y:hover,
+.text-y {
+  color: #f29d00;
+}
+.group-hover\:text-yy:hover,
+.hover\:text-yy:hover,
+.text-yy {
+  color: #cc8400;
+}
+
+.jodit-status-bar__item.jodit-status-bar__item-right a {
+  display: none;
+}
+.required:after {
+  content: "*";
+  color: red;
+  padding-left: 5px;
+  display: inline;
+}
+.slick-slide {
+  padding-right: 15px;
+}
+/* tailwind.css or your custom css file */
+@keyframes zoomFadeInOut {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(1.1);
+  }
+  20% {
+    transform: scale(0.9);
+  }
+  25% {
+    transform: scale(1);
+  }
+  90% {
+    transform: scale(1);
+  }
+}
+.zoom-fade-in-out {
+  animation-name: zoomFadeInOut;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 50%;
+}
+
+.skiptranslate {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+}
+
+.translated-rtl {
+  direction: rtl !important;
+  text-align: right !important;
+}

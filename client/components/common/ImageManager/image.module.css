@@ -1,0 +1,3 @@
+.imageWrapper:hover .deleteBtn {
+  display: flex;
+}

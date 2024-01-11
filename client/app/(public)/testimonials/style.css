@@ -1,0 +1,35 @@
+.pagination {
+  list-style: none;
+  height: 31.5px;
+  width: 31.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #299bcc;
+}
+.page-link {
+  color: white;
+}
+.page-item {
+  list-style: none;
+  padding: 2px 12px;
+  height: 31.5px;
+  width: 31.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2px;
+
+  cursor: pointer;
+  border: 1px solid #dee2e6;
+}
+
+.controller-btn {
+  cursor: pointer;
+  font-size: 10px;
+}

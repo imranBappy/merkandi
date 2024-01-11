@@ -1,0 +1,52 @@
+{
+  "name": "merkandi",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev & node server.js",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@paypal/react-paypal-js": "^8.1.3",
+    "@reduxjs/toolkit": "^1.9.7",
+    "@stripe/react-stripe-js": "^2.4.0",
+    "@stripe/stripe-js": "^2.2.2",
+    "algoliasearch": "^4.22.0",
+    "aws-sdk": "^2.1500.0",
+    "buffer": "^6.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "gravatar-url": "^4.0.1",
+    "i": "^0.3.7",
+    "install": "^0.13.0",
+    "jodit-react": "^1.3.39",
+    "jose": "^5.1.1",
+    "moment": "^2.29.4",
+    "next": "^14.0.1",
+    "nookies": "^2.5.2",
+    "npm": "^10.2.5",
+    "react": "^18.2.0",
+    "react-aws-s3": "^1.5.0",
+    "react-data-table-component": "^7.5.4",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^4.11.0",
+    "react-image-gallery": "^1.3.0",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-paginate": "^8.2.0",
+    "react-redux": "^8.1.3",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.52.0",
+    "eslint-config-next": "13.5.6",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.5"
+  }
+}

@@ -1,0 +1,18 @@
+import Device from 'path-to-your-hooks-folder/Device';
+
+function MyComponent() {
+  const deviceType = Device();
+
+  return (
+    <>
+      {deviceType === 'desktop' && (
+        <div>Desktop content</div>
+      )}
+      {deviceType === 'mobile' && (
+        <div>Mobile content</div>
+      )}
+    </>
+  );
+}
+
+export default MyComponent;
