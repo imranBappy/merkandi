@@ -53,6 +53,21 @@ const AddCoupon = () => {
       setError({ ...error, discount: "Discount is required" });
       return;
     }
+    if (NaN === typeof Number(coupon.discount)) {
+      setError({ ...error, discount: "Discount must be a number" });
+      return;
+    }
+
+    if (Number(coupon.discount) > 100) {
+      setError({ ...error, discount: "Discount must be less than 100" });
+      return;
+    }
+
+    if (Number(coupon.discount) < 0) {
+      setError({ ...error, discount: "Discount must be greater than 0" });
+      return;
+    }
+
     if (!coupon.expireAt) {
       setError({ ...error, expireAt: "ExpireAt is required" });
       return;
@@ -75,7 +90,7 @@ const AddCoupon = () => {
         name={"discount"}
         value={coupon.discount}
         onChange={handleChange}
-        placeholder="Enter discount"
+        placeholder="Enter discount in percent ( e.g 15 ) "
         error={error.discount}
         type="number"
       />

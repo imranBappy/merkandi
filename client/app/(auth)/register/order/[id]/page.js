@@ -4,6 +4,7 @@ import React from "react";
 import Paypal from "./Paypal";
 import Stripe from "./Stripe";
 import { useSearchParams } from "next/navigation";
+import ApplyCouponCode from "./ApplyCouponCode";
 
 const Page = () => {
   const query = useSearchParams();
@@ -22,6 +23,7 @@ const Page = () => {
           <Stripe />
           <Paypal />
         </div>
+        <ApplyCouponCode />
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ const {
   getCouponCodes,
   updateCouponCode,
   deleteCouponCode,
+  verifyCoupon,
 } = require("../controllers/couponCodeControllers");
 const isAuthenticated = require("../middlewares/isAuthenticated");
 const { userType } = require("../utils/userType");
@@ -18,5 +19,7 @@ router
   .route("/:id", isAuthenticated([userType.admin, userType.staff]))
   .patch(updateCouponCode)
   .delete(deleteCouponCode);
+
+router.route("/verify").post(verifyCoupon);
 
 module.exports = router;

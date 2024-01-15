@@ -17,7 +17,7 @@ export const conversationsApi = apiSlice.injectEndpoints({
           getState,
         }
       ) {
-        const socket = io("http://localhost:5000", {
+        const socket = io(process.env.NEXT_PUBLIC_HOST, {
           reconnectionDelay: 1000,
           reconnection: true,
           reconnectionAttemps: 10,

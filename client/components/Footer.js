@@ -18,7 +18,7 @@ const Footer = () => {
             <div className="flex flex-wrap py-10">
               <div className="w-1/3">
                 <Image
-                  src={data?.footerLogo?.url || "/images/logo.svg"}
+                  src={data?.footerLogo?.url}
                   width={163}
                   height={72}
                   alt="Picture of the author"

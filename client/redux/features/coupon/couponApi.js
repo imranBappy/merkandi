@@ -16,7 +16,7 @@ export const couponApi = apiSlice.injectEndpoints({
         `${url}?page=${page}&limit=${limit}`,
       providesTags: ["Coupon"],
     }),
-   
+
     updateCoupon: builder.mutation({
       query: ({ id, body }) => ({
         url: `${url}/${id}`,
@@ -32,6 +32,13 @@ export const couponApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Coupon"],
     }),
+    verifyCode: builder.mutation({
+      query: (code) => ({
+        url: `${url}/verify/`,
+        method: "POST",
+        body: { code },
+      }),
+    }),
   }),
 });
 
@@ -40,4 +47,5 @@ export const {
   useGetCouponsQuery,
   useUpdateCouponMutation,
   useDeleteCouponMutation,
+  useVerifyCodeMutation,
 } = couponApi;

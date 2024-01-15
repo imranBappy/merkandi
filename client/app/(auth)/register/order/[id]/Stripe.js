@@ -10,9 +10,10 @@ import StripePay from "./StripePay";
 import { loadStripe } from "@stripe/stripe-js";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 import { useParams } from "next/navigation";
+import Toaster from "@/components/common/Toaster/Toaster";
 
 const Stripe = () => {
-  const [paymentInit, { data, isLoading, isSuccess }] =
+  const [paymentInit, { data, isLoading, isSuccess, isError, error }] =
     useCreateStripePaymentMutation();
   const router = useRouter();
   const query = useSearchParams();
@@ -21,9 +22,11 @@ const Stripe = () => {
 
   const handlePay = () => {
     const plan = query.get("plan");
+    const coupon = query.get("coupon");
     paymentInit({
       role: plan.toUpperCase(),
       _id: params.id,
+      coupon,
     });
   };
 
@@ -34,6 +37,15 @@ const Stripe = () => {
       );
     }
   }, [isSuccess, data?.client_secret, params.id, router]);
+
+  useEffect(() => {
+    if (isError) {
+      Toaster({
+        type: "error",
+        message: error?.data || "Something went wrong",
+      });
+    }
+  }, [isError, error]);
 
   const options = {
     clientSecret: clientSecret,

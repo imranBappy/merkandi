@@ -139,7 +139,7 @@ const Header = () => {
               <div className="w-1/4">
                 <Link href="/">
                   <Image
-                    src={data?.logo?.url || "/images/logo.svg"}
+                    src={data?.logo?.url}
                     width={163}
                     height={72}
                     alt="Picture of the author"
@@ -285,7 +285,7 @@ const Header = () => {
           <div>
             <Link href="/">
               <Image
-                src={data?.logo?.url || "/images/logo.svg"}
+                src={data?.logo?.url}
                 width={136}
                 height={40}
                 alt="Picture of the author"

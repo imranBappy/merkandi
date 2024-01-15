@@ -69,3 +69,20 @@ exports.deleteCouponCode = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.verifyCoupon = async (req, res, next) => {
+  try {
+    const { code } = req.body;
+    const couponCode = await CouponCode.findOne({
+      code,
+      isActive: true,
+      expireAt: { $gte: new Date() },
+    });
+    if (!couponCode) {
+      return next("Invalid Coupon Code");
+    }
+    res.status(200).json(couponCode);
+  } catch (error) {
+    next("Invalid Coupon Code");
+  }
+};

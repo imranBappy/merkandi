@@ -9,6 +9,7 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Loading from "@/components/common/Loader/Loading";
 import Toaster from "@/components/common/Toaster/Toaster";
 import PaymentMessage from "./PaymentMessage";
+const baseUrl = process.env.NEXT_PUBLIC_HOST;
 
 const Paypal = () => {
   const initialOptions = {
@@ -48,18 +49,15 @@ const Paypal = () => {
             }}
             createOrder={async () => {
               try {
-                const response = await fetch(
-                  "http://localhost:5000/payment/paypal/init",
-                  {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                      user_id: params.id,
-                    }),
-                  }
-                );
+                const response = await fetch(`${baseUrl}/payment/paypal/init`, {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    user_id: params.id,
+                  }),
+                });
 
                 const orderData = await response.json();
                 console.log({ orderData });
@@ -77,7 +75,7 @@ const Paypal = () => {
               try {
                 console.log({ data, actions, user: params.id });
                 const response = await fetch(
-                  `http://localhost:5000/payment/paypal/success`,
+                  `${baseUrl}/payment/paypal/success`,
                   {
                     method: "POST",
                     headers: {

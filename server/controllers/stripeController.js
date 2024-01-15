@@ -1,10 +1,11 @@
 const Auth = require("../models/Auth");
+const CouponCode = require("../models/CouponCode");
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
 exports.initPayment = async (req, res, next) => {
   try {
-    const { role, _id } = req.body;
+    const { role, _id, coupon } = req.body;
     let amount = 0;
 
     if (role === "STANDARD") {
@@ -13,6 +14,18 @@ exports.initPayment = async (req, res, next) => {
       amount = 223;
     } else {
       return next("Role is not correct!");
+    }
+
+    if (coupon) {
+      const checkCode = await CouponCode.findOne({
+        code: coupon,
+        isActive: true,
+        expireAt: { $gte: new Date() },
+      });
+      if (!checkCode) {
+        return next("Invalid Coupon Code");
+      }
+      amount = Math.round(amount - (amount * checkCode.discount) / 100);
     }
 
     const paymentIntent = await stripe.paymentIntents.create({

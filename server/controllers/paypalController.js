@@ -44,7 +44,6 @@ async function handleResponse(response) {
 const createOrder = async (user_id) => {
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders`;
-  console.log({ user_id });
 
   const payload = {
     intent: "CAPTURE",

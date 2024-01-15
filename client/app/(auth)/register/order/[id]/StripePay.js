@@ -1,8 +1,6 @@
 "use client";
 
-import { loadStripe } from "@stripe/stripe-js";
-import React, { use, useEffect, useState } from "react";
-import { Elements } from "@stripe/react-stripe-js";
+import React, { useEffect, useState } from "react";
 import {
   PaymentElement,
   useStripe,
@@ -67,7 +65,7 @@ const StripePay = () => {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `http://localhost:3000/register/order/${params?.id}?paymentType=stripe`,
+        return_url: `${process.env.NEXT_PUBLIC_BASE_URL}/register/order/${params?.id}?paymentType=stripe`,
       },
     });
 

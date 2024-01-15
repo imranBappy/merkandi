@@ -2,42 +2,14 @@
 import LeftUser from "@/components/LeftUser";
 import Blank from "@/components/inbox/Blank";
 import Sidebar from "@/components/inbox/Sidebar";
-import Messenger from "@/components/seller/Messenger";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
-
-const users = [
-  {
-    id: 1,
-    name: "HeRa",
-    avatar: "/users.jpg",
-    status: "Online",
-    address: "503 Broadway",
-    city: "New York",
-    country: "USA",
-    position: "Warehouse Manager",
-    phone: "+1 (646) 123-1234",
-    email: "glyon@instock.com",
-  },
-  {
-    id: 2,
-    name: "HeRa Khan",
-    avatar: "/user.jpg",
-    status: "Offline",
-    address: "503 Broadway",
-    city: "New York",
-    country: "USA",
-    position: "Warehouse Manager",
-    phone: "+1 (646) 123-1234",
-    email: "glyon@instock.com",
-  },
-];
 
 export default function Home() {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io("http://localhost:5000");
+    const newSocket = io(process.env.NEXT_PUBLIC_HOST);
     setSocket(newSocket);
     return () => newSocket.close();
   }, []);
