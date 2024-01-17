@@ -9,7 +9,10 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Loading from "@/components/common/Loader/Loading";
 import Toaster from "@/components/common/Toaster/Toaster";
 import PaymentMessage from "./PaymentMessage";
-const baseUrl = process.env.NEXT_PUBLIC_HOST;
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.NEXT_PUBLIC_HOST
+    : "http://localhost:5000";
 
 const Paypal = () => {
   const initialOptions = {
@@ -17,6 +20,7 @@ const Paypal = () => {
       "ATpd_RagWs59VcEJ-Rv3bzkW2tlC-os2VmWmB9sT7VAtR3eoE0tGXOJLYBw1gkHXAB6x46JZxL5dNwAU",
     "disable-funding": "paylater,venmo",
     "data-sdk-integration-source": "integrationbuilder_sc",
+    currency: "EUR",
   };
 
   const router = useRouter();
@@ -24,7 +28,10 @@ const Paypal = () => {
   const query = useSearchParams();
 
   const handlePay = () => {
-    router.push(`/register/order/${params.id}?paymentType=paypal`);
+    router.push(`/register/order/${params.id}?paymentType=paypal&plan=${
+      query.get("plan") || ""
+    }&coupon=${query.get("coupon") || ""}
+    `);
   };
 
   if (!params.id) {
@@ -49,18 +56,25 @@ const Paypal = () => {
             }}
             createOrder={async () => {
               try {
-                const response = await fetch(`${baseUrl}/payment/paypal/init`, {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
+                const response = await fetch(
+                  `${baseUrl}/payment/paypal/init`,
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      user_id: params.id,
+                      role: query.get("plan"),
+                      coupon: query.get("coupon"),
+                    }),
                   },
-                  body: JSON.stringify({
-                    user_id: params.id,
-                  }),
-                });
+                  {
+                    caches: "no-store",
+                  }
+                );
 
                 const orderData = await response.json();
-                console.log({ orderData });
 
                 if (orderData.id) {
                   return orderData.id;
@@ -68,12 +82,15 @@ const Paypal = () => {
                 throw new Error("Invalid order ID");
               } catch (error) {
                 console.error(error);
-                // setMessage(`Could not initiate PayPal Checkout...${error}`);
+                console.log({ error });
+                Toaster({
+                  type: "error",
+                  message: `Could not initiate PayPal Checkout`,
+                });
               }
             }}
             onApprove={async (data, actions) => {
               try {
-                console.log({ data, actions, user: params.id });
                 const response = await fetch(
                   `${baseUrl}/payment/paypal/success`,
                   {
@@ -85,6 +102,9 @@ const Paypal = () => {
                       order_id: data.orderID,
                       user: params.id,
                     }),
+                  },
+                  {
+                    fetch: "no-store",
                   }
                 );
 

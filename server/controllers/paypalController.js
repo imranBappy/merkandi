@@ -1,7 +1,14 @@
 const fetch = require("node-fetch");
 const Auth = require("../models/Auth");
+const calculatePercentage = require("../utils/calculatePercentage");
+const CouponCode = require("../models/CouponCode");
 
-const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
+const {
+  PAYPAL_CLIENT_ID,
+  PAYPAL_CLIENT_SECRET,
+  STANDARD_PACKAGE,
+  PREMIUM_PACKAGE,
+} = process.env;
 const base = "https://api-m.sandbox.paypal.com";
 
 const generateAccessToken = async () => {
@@ -41,17 +48,39 @@ async function handleResponse(response) {
   }
 }
 
-const createOrder = async (user_id) => {
+const createOrder = async (user_id, role = "", coupon) => {
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders`;
+  role = role.toUpperCase();
+
+  let amount = 0;
+  if (role === "STANDARD") {
+    amount = STANDARD_PACKAGE;
+  } else if (role === "PREMIUM") {
+    amount = PREMIUM_PACKAGE;
+  } else {
+    throw Error("Role is not correct!");
+  }
+
+  if (coupon) {
+    const checkCode = await CouponCode.findOne({
+      code: coupon,
+      isActive: true,
+      expireAt: { $gte: new Date() },
+    });
+    if (!checkCode) {
+      throw Error("Invalid Coupon Code");
+    }
+    amount = calculatePercentage(amount, checkCode.discount);
+  }
 
   const payload = {
     intent: "CAPTURE",
     purchase_units: [
       {
         amount: {
-          currency_code: "USD",
-          value: "100",
+          currency_code: "EUR",
+          value: amount.toString(),
         },
         custom_id: user_id,
       },
@@ -72,12 +101,17 @@ const createOrder = async (user_id) => {
 
 exports.createPayment = async (req, res, next) => {
   try {
-    const { user_id } = req.body;
-
-    const { jsonResponse, httpStatusCode } = await createOrder(user_id);
+    const { user_id, role, coupon } = req.body;
+    console.log({ user_id, role, coupon });
+    const { jsonResponse, httpStatusCode } = await createOrder(
+      user_id,
+      role,
+      coupon
+    );
 
     res.status(httpStatusCode).json(jsonResponse);
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };

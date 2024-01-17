@@ -18,7 +18,7 @@ const PrivateRoute = (props) => {
   } else if (isAuthintication && role.includes(data?.role)) {
     return <>{children}</>;
   }
-  router.push("/login");
+  router.push("/");
 };
 
 export default PrivateRoute;

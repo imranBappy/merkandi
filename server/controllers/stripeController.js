@@ -1,5 +1,6 @@
 const Auth = require("../models/Auth");
 const CouponCode = require("../models/CouponCode");
+const calculatePercentage = require("../utils/calculatePercentage");
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
@@ -7,15 +8,13 @@ exports.initPayment = async (req, res, next) => {
   try {
     const { role, _id, coupon } = req.body;
     let amount = 0;
-
     if (role === "STANDARD") {
-      amount = 159;
+      amount = process.env.STANDARD_PACKAGE;
     } else if (role === "PREMIUM") {
-      amount = 223;
+      amount = process.env.PREMIUM_PACKAGE;
     } else {
       return next("Role is not correct!");
     }
-
     if (coupon) {
       const checkCode = await CouponCode.findOne({
         code: coupon,
@@ -25,9 +24,8 @@ exports.initPayment = async (req, res, next) => {
       if (!checkCode) {
         return next("Invalid Coupon Code");
       }
-      amount = Math.round(amount - (amount * checkCode.discount) / 100);
+      amount = calculatePercentage(amount, checkCode.discount);
     }
-
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
       currency: "eur",
@@ -35,7 +33,6 @@ exports.initPayment = async (req, res, next) => {
         enabled: true,
       },
       metadata: {
-        // integration_check: "accept_a_payment",
         user_id: _id,
       },
     });
@@ -73,7 +70,6 @@ exports.successPayment = async (req, res, next) => {
 
     res.json({ message: "Payment success!" });
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
