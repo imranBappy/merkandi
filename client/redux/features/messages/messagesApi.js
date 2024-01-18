@@ -15,7 +15,7 @@ export const messagesApi = apiSlice.injectEndpoints({
         try {
           await cacheDataLoaded;
           const socket = io(baseUrl, {
-            reconnectionDelay: 1000,
+            reconnectionDelay: 100,
             reconnection: true,
             reconnectionAttemps: 10,
             transports: ["websocket"],
