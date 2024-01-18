@@ -4,10 +4,7 @@ const baseUrl = process.env.NEXT_PUBLIC_HOST;
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl:
-      process.env.NODE_ENV === "production"
-        ? baseUrl
-        : "http://192.168.0.111:5000",
+    baseUrl: baseUrl,
     prepareHeaders: async (headers, { getState, endpoint }) => {
       let token = getState();
       token = token?.auth?.accessToken;
