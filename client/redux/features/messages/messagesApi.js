@@ -1,6 +1,7 @@
 import { apiSlice } from "../api/apiSlice";
 
 import { io } from "socket.io-client";
+const baseUrl = process.env.NEXT_PUBLIC_HOST;
 
 export const messagesApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -13,7 +14,7 @@ export const messagesApi = apiSlice.injectEndpoints({
       ) {
         try {
           await cacheDataLoaded;
-          const socket = io("http://localhost:5000", {
+          const socket = io(baseUrl, {
             reconnectionDelay: 1000,
             reconnection: true,
             reconnectionAttemps: 10,
@@ -37,7 +38,9 @@ export const messagesApi = apiSlice.injectEndpoints({
               }
             }
           });
-        } catch (error) {}
+        } catch (error) {
+          console.log(error);
+        }
         await cacheEntryRemoved;
       },
     }),
