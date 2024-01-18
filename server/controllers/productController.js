@@ -123,7 +123,8 @@ exports.getProduct = async (req, res, next) => {
         populate: {
           path: "flag",
         },
-      });
+      })
+      .populate("user", "email name phone");
 
     res.status(200).json(product);
   } catch (error) {

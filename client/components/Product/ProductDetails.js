@@ -5,13 +5,14 @@ import PhotoGallery from "@/components/PhotoGallery";
 import ReadMore from "@/components/ReadMore";
 import { useGetProductQuery } from "@/redux/features/product/productApi";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { useGetStoresQuery } from "@/redux/features/store/storeApi";
 import { usePostClickMutation } from "@/redux/features/click/clickApi";
 import { useDispatch, useSelector } from "react-redux";
 import { addOrder } from "@/redux/features/order/orderSlice";
 import Toaster from "@/components/common/Toaster/Toaster";
+import { useAddConversationMutation } from "@/redux/features/conversactions/conversactionsApi";
 
 export default function ProductDetails({ params }) {
   const router = useRouter();
@@ -27,7 +28,9 @@ export default function ProductDetails({ params }) {
   });
 
   const [clickProduct, { isLoading: clickLoading }] = usePostClickMutation();
-  const { isAuthintication } = useSelector((state) => state.auth);
+  const { isAuthintication, data: authData } = useSelector(
+    (state) => state.auth
+  );
   const dispatch = useDispatch();
 
   const handleClick = (prodId, type) => {
@@ -38,6 +41,10 @@ export default function ProductDetails({ params }) {
       clickProduct({ product: prodId, type });
     }
   };
+  const [
+    addConversation,
+    { isSuccess: isAddConversationSuccess, isError, error },
+  ] = useAddConversationMutation();
 
   const { order } = useSelector((state) => state.order);
 
@@ -67,6 +74,31 @@ export default function ProductDetails({ params }) {
       type: "success",
       message: "Product added to basket",
     });
+  };
+
+  useEffect(() => {
+    if (isAddConversationSuccess) {
+      Toaster({
+        type: "success",
+        message: "Conversation added successfully",
+      });
+    }
+  }, [isAddConversationSuccess]);
+
+  const handleMessage = () => {
+    console.log(data);
+    // handleClick(data?._id, "message");
+    // if (data.user) {
+    //   const payload = {
+    //     participant: data.user,
+    //     message: `
+    //       User: ${authData.name}
+    //       Email: ${authData.email}
+    //       Click Product : ${location.href}
+    //     `,
+    //   };
+    //   addConversation(payload);
+    // }
   };
 
   return (
@@ -181,7 +213,7 @@ export default function ProductDetails({ params }) {
               <div className="flex items-center gap-3 my-4">
                 <button
                   disabled={clickLoading}
-                  onClick={() => handleClick(data?._id, "message")}
+                  onClick={handleMessage}
                   className="flex items-center bg-[#f29d00] hover:bg-[#cc8400] text-white px-5 py-3 font-normal text-sm leading-3"
                 >
                   <svg
