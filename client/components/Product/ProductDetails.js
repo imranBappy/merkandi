@@ -86,19 +86,18 @@ export default function ProductDetails({ params }) {
   }, [isAddConversationSuccess]);
 
   const handleMessage = () => {
-    console.log(data);
-    // handleClick(data?._id, "message");
-    // if (data.user) {
-    //   const payload = {
-    //     participant: data.user,
-    //     message: `
-    //       User: ${authData.name}
-    //       Email: ${authData.email}
-    //       Click Product : ${location.href}
-    //     `,
-    //   };
-    //   addConversation(payload);
-    // }
+    handleClick(data?._id, "message");
+    if (data?.user?.email) {
+      const payload = {
+        participant: data?.user?.email,
+        message: `
+          User: ${authData.name}
+          Email: ${authData.email}
+          Clicked Product: ${location.href}
+        `,
+      };
+      addConversation(payload);
+    }
   };
 
   return (
