@@ -209,7 +209,7 @@ export default function Home() {
 
           <div className="md:p-0 p-4">
             <Title
-              title="Merkandi - customers reviews"
+              title="Lot24 - customers reviews"
               name="View all"
               link="/testimonials"
             />

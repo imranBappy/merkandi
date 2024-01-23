@@ -68,7 +68,7 @@ function MobileCategoryMenu() {
 
         <div className="flex flex-col items-center w-full bg-[#1f8ebe] p-4">
           <h1 className="text-lg text-center text-white font-bold leading-6 mb-1">
-            Merkandi - #1 wholesale trading platform since 2008
+            Lot24 - #1 wholesale trading platform since 2008
           </h1>
           <span className="text-white text-center text-sm font-light">
             On the wholesale market of liquidation stocks, surplus stocks and

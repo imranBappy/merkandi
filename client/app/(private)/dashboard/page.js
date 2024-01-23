@@ -113,7 +113,7 @@ export default function Home() {
                 />
                 <div className="z-10 space-y-3 flex flex-col">
                   <h1 className="text-white text-xl font-bold">
-                    Unlock the full potential of Merkandi!
+                    Unlock the full potential of Lot24!
                   </h1>
                   <p className="text-white">
                     Upgrade to the <b>PREMIUM</b> account and enjoy a variety of

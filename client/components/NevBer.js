@@ -32,9 +32,7 @@ function NevBer() {
         <div className="left-0 top-0 bottom-0 overflow-auto fixed w-72 bg-white transition duration-300 delay-600">
           <div className="flex justify-between items-start bg-[#1f8ebe] p-3">
             <div className="text-white">
-              <h1 className="text-xl font-semibold mb-1">
-                Welcome to Merkandi
-              </h1>
+              <h1 className="text-xl font-semibold mb-1">Welcome to Lot24</h1>
               <p className="text-sm font-normal mb-4">
                 Wholesale trading without limits
               </p>
@@ -65,9 +63,7 @@ function NevBer() {
           </div>
 
           {data?.categories?.map((item) => (
-            <Horizontal
-              key={item?._id}
-              category={item} />
+            <Horizontal key={item?._id} category={item} />
           ))}
         </div>
       )}

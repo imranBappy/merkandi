@@ -81,10 +81,7 @@ function AdminBer() {
         <AdminLink
           defaultTitle="Coupon"
           defaultIcon={<BiSolidTachometer fontSize={25} />}
-          items={[
-            { title: "Coupon list", link: "/admin/coupon" },
-            { title: "Coupon Create", link: "/admin/coupon/create" },
-          ]}
+          items={[{ title: "Coupon list", link: "/admin/coupon" }]}
         />
         <AdminLink
           defaultTitle="Page"

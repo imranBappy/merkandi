@@ -83,7 +83,7 @@ const RegistationRightSiteInfo = () => {
           </p>
           <p className="inline-flex">
             <AiOutlineClose className="fill-rose-500 mr-1" fontSize={20} />
-            Listing your company in Merkandi international catalogue.
+            Listing your company in Lot24 international catalogue.
           </p>
           <p className="inline-flex">
             <AiOutlineClose className="fill-rose-500 mr-1" fontSize={20} />

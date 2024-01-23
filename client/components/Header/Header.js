@@ -114,7 +114,7 @@ const Header = () => {
                 position="left"
                 options={[
                   { label: "Guidelines", url: "#" },
-                  { label: "Contact Merkandi", url: "#" },
+                  { label: "Contact Lot24", url: "#" },
                 ]}
               /> */}
             </div>

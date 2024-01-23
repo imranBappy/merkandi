@@ -289,7 +289,7 @@ export default function Register() {
                 </p>
                 <p className="inline-flex">
                   <BiCheck className="fill-green-500" fontSize={30} />
-                  Listing your company in Merkandi international catalogue.
+                  Listing your company in Lot24 international catalogue.
                 </p>
                 <p className="inline-flex">
                   <BiCheck className="fill-green-500" fontSize={30} />
@@ -386,7 +386,7 @@ export default function Register() {
                     className="fill-rose-500 mr-1"
                     fontSize={20}
                   />
-                  Listing your company in Merkandi international catalogue.
+                  Listing your company in Lot24 international catalogue.
                 </p>
                 <p className="inline-flex">
                   <AiOutlineClose

@@ -30,8 +30,8 @@ const Register1 = () => {
                     99% <span>Satisfied users</span>
                   </p>
                   <p>
-                    Effectiveness of Merkandi confirmed by users from all over
-                    the world
+                    Effectiveness of Lot24 confirmed by users from all over the
+                    world
                   </p>
                 </div>
               </div>

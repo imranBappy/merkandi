@@ -315,7 +315,7 @@ const Registation = () => {
       </div>
       <div className="flex flex-col border-t   gap-4 md:flex-row items-start justify-between">
         <h1 className="w-full mt-4 md:w-3/12  text-md font-semibold">
-          On Merkandi I want to:
+          On Lot24 I want to:
         </h1>
         <div className=" flex-grow space-y-3 mt-2">
           <div className="flex gap-4">

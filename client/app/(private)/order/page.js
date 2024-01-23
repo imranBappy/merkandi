@@ -49,7 +49,7 @@ const Page = () => {
     if (order) {
       dispatch(addOrder(order));
     }
-  }, [dispatch, order]);
+  }, []);
 
   useEffect(() => {
     if (orderIsSuccess) {

@@ -32,61 +32,74 @@ const Footer = () => {
               </div>
               <div className="w-2/12 flex flex-col space-y-2">
                 <h6 className="text-white">Community</h6>
-                <Link href="/" className="hover:text-white leading-6">
+                <Link
+                  href="/stock-grades"
+                  className="hover:text-white leading-6"
+                >
                   Stock grades
                 </Link>
-                <Link href="/" className="hover:text-white leading-6">
+                <Link
+                  href="/obtaining-contact-details-of-the-suppliers"
+                  className="hover:text-white leading-6"
+                >
                   What do I need to do to access the wholesalers data?
                 </Link>
-                <Link href="/" className="hover:text-white leading-6">
-                  Blog
-                </Link>
-                <Link href="/" className="hover:text-white leading-6">
-                  History of Merkandi
+
+                <Link href="/timeline" className="hover:text-white leading-6">
+                  History of Lot24
                 </Link>
               </div>
               <div className="w-2/12 flex flex-col space-y-2">
                 <h6 className="text-white">Information</h6>
-                <Link href="/" className="hover:text-white leading-6">
+                <Link href="/conditions" className="hover:text-white leading-6">
                   Terms and Conditions
                 </Link>
-                <Link href="/" className="hover:text-white leading-6">
+                <Link
+                  href="/privacy-policy"
+                  className="hover:text-white leading-6"
+                >
                   Privacy Policy
                 </Link>
-                <Link href="/" className="hover:text-white leading-6">
+                <Link href="/cookie" className="hover:text-white leading-6">
                   Cookie files policy
                 </Link>
-                <Link href="/" className="hover:text-white leading-6">
+                <Link href="/about-us" className="hover:text-white leading-6">
                   About us
                 </Link>
-                <Link href="/" className="hover:text-white leading-6">
+                <Link
+                  href="/advertisement"
+                  className="hover:text-white leading-6"
+                >
                   Advertisement
                 </Link>
-                <Link href="/" className="hover:text-white leading-6">
+                <Link
+                  href="/goods-search"
+                  className="hover:text-white leading-6"
+                >
                   Goods search service
-                </Link>
-                <Link href="/" className="hover:text-white leading-6">
-                  Work at Merkandi
                 </Link>
               </div>
               <div className="w-2/12 flex flex-col space-y-2">
                 <h6 className="text-white">Help</h6>
-                <Link href="/" className="hover:text-white leading-6">
+                <Link href="/faq" className="hover:text-white leading-6">
                   FAQ
                 </Link>
-                <Link href="/" className="hover:text-white leading-6">
+                <Link href="/contact" className="hover:text-white leading-6">
                   Contact
                 </Link>
-                <Link href="/" className="hover:text-white leading-6">
+                <Link href="/sitemap" className="hover:text-white leading-6">
                   Sitemap
                 </Link>
-                <Link href="/" className="hover:text-white leading-6">
+                <Link href="/for-buyers" className="hover:text-white leading-6">
                   For buyers
                 </Link>
-                <Link href="/" className="hover:text-white leading-6">
+                <Link
+                  href="/for-sellers"
+                  className="hover:text-white leading-6"
+                >
                   For sellers
                 </Link>
-                <Link href="/" className="hover:text-white leading-6">
+                <Link href="/guidelines" className="hover:text-white leading-6">
                   Guidelines
                 </Link>
               </div>
@@ -112,13 +125,13 @@ const Footer = () => {
               className="m-auto border-b border-[#414141] pb-3 mb-3"
             />
             <span className="flex justify-center text-center text-xs px-10 leading-6 mt-3 w-full">
-              © Copyright (c) 2008 - 2023 Merkandi All rights reserved. All
+              © Copyright (c) 2008 - 2023 Lot24 All rights reserved. All
               trademarks and brands used on this site belong to the owner of the
               website and are used for information purpose.
               <br />
               The use of this website constitutes acceptance of the terms of the
-              contract, and the general terms and conditions. Merkandi assumes
-              no responsibility for the content of the offers placed on this
+              contract, and the general terms and conditions. Lot24 assumes no
+              responsibility for the content of the offers placed on this
               website.
             </span>
           </div>

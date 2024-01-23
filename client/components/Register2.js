@@ -94,7 +94,7 @@ function Register2() {
             99% <span>Satisfied users</span>
           </p>
           <p className="text-sm">
-            Effectiveness of Merkandi confirmed by users from all over the world
+            Effectiveness of Lot24 confirmed by users from all over the world
           </p>
         </div>
       </div>
@@ -214,7 +214,7 @@ function Register2() {
         </div>
         <div className="flex items-center justify-between p-2">
           {showFirst && (
-            <h1>Listing your company in Merkandi international catalogue.</h1>
+            <h1>Listing your company in Lot24 international catalogue.</h1>
           )}
           {showSecond && (
             <BiCheckCircle className="text-green-500 w-12" fontSize={30} />
