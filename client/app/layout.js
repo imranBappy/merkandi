@@ -67,7 +67,16 @@ export default function RootLayout({ children }) {
 
         <Script src="/assets/scripts/lang-config.js" />
         {/* <Script src="/assets/scripts/chat-config.js" strategy="lazyOnload" /> */}
-
+        <Script
+          src="/assets/scripts/translation.js"
+          strategy="beforeInteractive"
+        />
+        {process.env.GOOGLE_TRANSLATION_CONFIG && (
+          <Script
+            src="//translate.google.com/translate_a/element.js?cb=TranslateInit"
+            strategy="afterInteractive"
+          />
+        )}
         <noscript>
           <a href="https://www.livechat.com/chat-with/16974474/" rel="nofollow">
             Chat with us

@@ -6,7 +6,6 @@ import TextInput from "../common/Input/TextInput";
 import TextboxInput from "../common/Input/TextboxInput";
 import Button from "../common/Button/Button";
 import {
-  useGetStoreQuery,
   usePostStoreMutation,
   useUpdateStoreMutation,
 } from "@/redux/features/store/storeApi";
