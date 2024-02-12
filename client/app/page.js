@@ -16,7 +16,8 @@ import SmProductCard from "@/components/Card/SmProductCard";
 import SmProductLeader from "@/components/common/Loader/SmProductLeader";
 import { useGetTestimonialsQuery } from "@/redux/features/testimonial/testimonialApi";
 import { useSelector } from "react-redux";
-import Feature from "@/components/Feature";
+import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
+import { useRef } from "react";
 
 export default function Home() {
   const carouselSettings = {
@@ -54,7 +55,10 @@ export default function Home() {
       </button>
     ),
   };
-
+  const tawkMessengerRef = useRef();
+  const handleMinimize = () => {
+    tawkMessengerRef.current.minimize();
+  };
   const { data, isLoading } = useGetProductsQuery();
   const { data: testimonialData } = useGetTestimonialsQuery({
     page: 1,
@@ -80,7 +84,12 @@ export default function Home() {
 
   return (
     <>
-      {/* <Feature /> */}
+
+      <TawkMessengerReact
+        propertyId={process.env.NEXT_PUBLIC_PROPERTY_ID}
+        widgetId={process.env.NEXT_PUBLIC_WIDGET_ID}
+        ref={tawkMessengerRef}
+      />
       <Header />
 
       {result?.length > 0 ? (

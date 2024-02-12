@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@stripe/react-stripe-js": "^2.4.0",
     "@stripe/stripe-js": "^2.2.2",
+    "@tawk.to/tawk-messenger-react": "^2.0.2",
     "algoliasearch": "^4.22.0",
     "aws-sdk": "^2.1500.0",
     "buffer": "^6.0.3",
