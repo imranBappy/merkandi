@@ -1,3 +1,5 @@
+"use client";
+
 import ProductDetails from "@/components/Product/ProductDetails";
 
 const page = ({ params }) => {

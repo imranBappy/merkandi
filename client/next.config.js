@@ -10,6 +10,7 @@ const nextConfig = {
       "images.pexels.com",
     ],
   },
+
 };
 
 module.exports = nextConfig;

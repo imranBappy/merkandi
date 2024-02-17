@@ -17,9 +17,9 @@ import { useAddConversationMutation } from "@/redux/features/conversactions/conv
 export default function ProductDetails({ params }) {
   const router = useRouter();
 
-  const { data, isLoading } = useGetProductQuery(params.productId, {
+  const { data, isLoading } = useGetProductQuery(params.productid, {
     refetchOnMountOrArgChange: true,
-    skip: !params.productId,
+    skip: !params.productid,
   });
 
   const { data: storeData } = useGetStoresQuery({
