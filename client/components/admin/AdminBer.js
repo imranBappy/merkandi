@@ -101,65 +101,13 @@ function AdminBer() {
             { title: "Country", link: "/admin/country" },
           ]}
         />
-        <AdminLink
-          defaultTitle="Offers"
-          defaultIcon={<BiSolidTachometer fontSize={25} />}
-          items={[
-            { title: "Offers list", link: "/admin/offers" },
-            { title: "Offers add", link: "/admin/offers/add" },
-          ]}
-        />
-        <AdminLink
-          defaultTitle="Banner"
-          defaultIcon={<BiSolidTachometer fontSize={25} />}
-          items={[
-            { title: "Banner list", link: "/admin/banner" },
-            { title: "Banner add", link: "/admin/banner/add" },
-          ]}
-        />
-        <AdminLink
-          defaultTitle="Orders"
-          defaultIcon={<BiSolidTachometer fontSize={25} />}
-          items={[
-            { title: "Orders list", link: "/admin/orders" },
-            { title: "Pending Orders", link: "/admin/orders/pending" },
-            { title: "Order Cancel Reason", link: "/admin/orders/reason" },
-          ]}
-        />
+
         <AdminLink
           defaultTitle="Testimonial"
           defaultIcon={<BiSolidTachometer fontSize={25} />}
           items={[{ title: "Testimonial", link: "/admin/testimonial" }]}
         />
-        <AdminLink
-          defaultTitle="Service"
-          defaultIcon={<BiSolidTachometer fontSize={25} />}
-          items={[
-            { title: "Service list", link: "/admin/service" },
-            { title: "Service request", link: "/admin/service/request" },
-            { title: "Service cancel", link: "/admin/service/cancel" },
-            { title: "Service report", link: "/admin/service/report" },
-          ]}
-        />
-        <AdminLink
-          defaultTitle="Seller"
-          defaultIcon={<BiSolidTachometer fontSize={25} />}
-          items={[
-            { title: "Seller list", link: "/admin/seller" },
-            { title: "Seller request", link: "/admin/seller/request" },
-            { title: "Seller product", link: "/admin/seller/product" },
-            { title: "Seller report", link: "/admin/seller/report" },
-            { title: "Seller pay request", link: "/admin/payment/request" },
-          ]}
-        />
-        <AdminLink
-          defaultTitle="Payment Settings"
-          defaultIcon={<BiSolidTachometer fontSize={25} />}
-          items={[
-            { title: "Purchase Gateway", link: "/admin/payment" },
-            { title: "Seller Gateway", link: "/admin/payment/seller" },
-          ]}
-        />
+
         <AdminLink
           defaultTitle="Location"
           defaultIcon={<BiSolidTachometer fontSize={25} />}
@@ -180,16 +128,7 @@ function AdminBer() {
             { title: "Premium user", link: "/admin/user/premium" },
           ]}
         />
-        <AdminLink
-          defaultTitle="SMTP & OTP Config"
-          defaultIcon={<BiSolidTachometer fontSize={25} />}
-          items={[
-            { title: "OTP list", link: "/admin/otp" },
-            { title: "OTP add", link: "/admin/otp/add" },
-            { title: "Email list", link: "/admin/email" },
-            { title: "Email add", link: "/admin/email/add" },
-          ]}
-        />
+
         <AdminLink
           defaultTitle="My account"
           defaultIcon={<BiSolidTachometer fontSize={25} />}

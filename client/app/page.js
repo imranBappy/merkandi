@@ -56,9 +56,7 @@ export default function Home() {
     ),
   };
   const tawkMessengerRef = useRef();
-  const handleMinimize = () => {
-    tawkMessengerRef.current.minimize();
-  };
+
   const { data, isLoading } = useGetProductsQuery();
   const { data: testimonialData } = useGetTestimonialsQuery({
     page: 1,

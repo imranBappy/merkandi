@@ -3,8 +3,8 @@ import MenuItem from "./MenuItem";
 import MenuLoader from "./MenuLoader";
 
 const CategoryMenu = () => {
-  const { data, error, isLoading } = useGetCategoriesQuery();
-
+  const { data, isLoading } = useGetCategoriesQuery();
+  console.log({ data });
   if (isLoading) return <MenuLoader />;
   return (
     <div className="full bg-white z-30 relative">

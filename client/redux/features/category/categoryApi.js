@@ -12,7 +12,8 @@ export const categoryApi = apiSlice.injectEndpoints({
       invalidatesTags: ["Categories"],
     }),
     getCategories: builder.query({
-      query: () => url,
+      query: ({ page = 1, limit = 10 } = { page: 1, limit: 10 }) =>
+        `${url}?page=${page}&limit=${limit}`,
       providesTags: ["Categories"],
     }),
     getCategory: builder.query({

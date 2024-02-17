@@ -47,8 +47,6 @@ const AddSubcategory = ({ subcategoryState, imageState }) => {
 
   const { data: category } = useGetCategoriesQuery();
 
-  console.log({ category: category?.categories });
-
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;

@@ -40,8 +40,6 @@ export default function Login() {
     refetchOnWindowFocus: true,
   });
 
-  console.log({ categoryData });
-
   useEffect(() => {
     getProducts({
       category,

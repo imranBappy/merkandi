@@ -1,4 +1,5 @@
 "use client";
+import PublicRoute from "@/components/PublicRoute/PublicRoute";
 import Button from "@/components/common/Button/Button";
 import PasswordInput from "@/components/common/Input/PasswordInput";
 import TextInput from "@/components/common/Input/TextInput";
@@ -96,50 +97,52 @@ export default function Login() {
   };
 
   return (
-    <div className="py-0 flex flex-col justify-center sm:py-8">
-      <div className="relative py-6 m-4 sm:max-w-2xl sm:mx-auto">
-        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-        <div className="relative p-8 bg-white shadow-lg sm:rounded-3xl">
-          <div className="max-w-md mx-auto space-y-3">
-            <h1 className="text-2xl font-bold mb-4">Login</h1>
-            <TextInput
-              name="email"
-              type="email"
-              className="border p-2 w-full outline-0"
-              placeholder="Email address"
-              value={payload.email}
-              onChange={handleInputChange}
-            />
-            <PasswordInput
-              name="password"
-              value={payload.password}
-              onChange={handleInputChange}
-              className="border p-2 w-full outline-0"
-              placeholder="Type password"
-            />
+    <PublicRoute>
+      <div className="py-0 flex flex-col justify-center sm:py-8">
+        <div className="relative py-6 m-4 sm:max-w-2xl sm:mx-auto">
+          <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+          <div className="relative p-8 bg-white shadow-lg sm:rounded-3xl">
+            <div className="max-w-md mx-auto space-y-3">
+              <h1 className="text-2xl font-bold mb-4">Login</h1>
+              <TextInput
+                name="email"
+                type="email"
+                className="border p-2 w-full outline-0"
+                placeholder="Email address"
+                value={payload.email}
+                onChange={handleInputChange}
+              />
+              <PasswordInput
+                name="password"
+                value={payload.password}
+                onChange={handleInputChange}
+                className="border p-2 w-full outline-0"
+                placeholder="Type password"
+              />
 
-            <Link href="/forget" className="text-m text-right block">
-              Forgot your password?
-            </Link>
-            <Button
-              disabled={isLoading}
-              href={"#"}
-              onClick={handleSubmit}
-              className="w-full block text-center border bg-m text-white py-3 font-normal text-sm leading-3"
-              label={isLoading ? "Loading..." : "Login"}
-            />
-
-            <div className="pt-3 mt-3 border-t flex justify-center">
-              <p className="text-xm leading-6 float-left mr-1">
-                Dont you have an account yet?
-              </p>
-              <Link href="/register" className="text-m text-xm">
-                Register
+              <Link href="/forget" className="text-m text-right block">
+                Forgot your password?
               </Link>
+              <Button
+                disabled={isLoading}
+                href={"#"}
+                onClick={handleSubmit}
+                className="w-full block text-center border bg-m text-white py-3 font-normal text-sm leading-3"
+                label={isLoading ? "Loading..." : "Login"}
+              />
+
+              <div className="pt-3 mt-3 border-t flex justify-center">
+                <p className="text-xm leading-6 float-left mr-1">
+                  Dont you have an account yet?
+                </p>
+                <Link href="/register" className="text-m text-xm">
+                  Register
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </PublicRoute>
   );
 }

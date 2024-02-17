@@ -8,14 +8,23 @@ import Button from "@/components/common/Button/Button";
 import Image from "next/image";
 
 export default function Admin() {
-  const { data } = useGetCategoriesQuery();
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(10);
+  const { data, isLoading } = useGetCategoriesQuery(
+    {
+      limit: perPage,
+      page,
+    },
+    {
+      refetchOnMountOrArgChange: true,
+    }
+  );
   const [category, setCategory] = useState({
     _id: "",
     name: "",
     description: "",
   });
   const [image, setImage] = useState([]);
-
   const handleEdit = (item) => {
     setCategory({
       _id: item._id,
@@ -59,7 +68,6 @@ export default function Admin() {
       ),
     },
   ];
-
   return (
     <div className="max-w-screen-xl mx-auto my-1 md:px-8">
       <div className="flex flex-col md:flex-row items-start">
@@ -67,8 +75,8 @@ export default function Admin() {
           <AdminBer />
         </div>
         <div className="w-full md:w-9/12 pl-0 md:pl-6">
-          <div className="flex flex-col md:flex-row items-start">
-            <div className="w-full md:w-3/6 pr-0 md:mr-8">
+          <div className="flex flex-col  items-start">
+            <div className="w-full pr-0 md:mr-8">
               <h1 className="text-md font-semibold mb-2 block">
                 Add New Category
               </h1>
@@ -77,7 +85,7 @@ export default function Admin() {
                 imageState={[image, setImage]}
               />
             </div>
-            <div className="w-full md:w-3/6">
+            <div className="w-full  mb-5 ">
               <div>
                 <h1 className="text-md font-semibold mb-2 block">
                   All Categories
@@ -85,25 +93,22 @@ export default function Admin() {
                 <DataTable
                   columns={columns}
                   data={data?.categories || []}
-                  pagination
                   selectableRowsHighlight
                   handleEdit={handleEdit}
+                  pagination
+                  paginationTotalRows={data?.total || 0}
+                  paginationPerPage={10}
+                  paginationServer
+                  onChangePage={(page, perPage) => {
+                    setPage(page);
+                  }}
+                  onChangeRowsPerPage={(perPage, page) => {
+                    setPage(page);
+                    setPerPage(perPage);
+                  }}
+                  progressPending={isLoading}
                 />
               </div>
-              {/* <div className="mt-5">
-                <h1 className="text-md font-semibold mb-2 block">
-                  All Subcategory
-                </h1>
-                {shouldRender && (
-                  <DataTable
-                    columns={columns}
-                    data={subCategory?.data || []}
-                    pagination
-                    selectableRows
-                    selectableRowsHighlight
-                  />
-                )}
-              </div> */}
             </div>
           </div>
         </div>

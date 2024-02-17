@@ -8,7 +8,17 @@ import AddSubcategory from "@/components/admin/AddSubcategory";
 import Image from "next/image";
 
 export default function Admin() {
-  const { data } = useGetSubcategoriesQuery();
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(10);
+  const { data, isLoading } = useGetSubcategoriesQuery(
+    {
+      limit: perPage,
+      page,
+    },
+    {
+      refetchOnMountOrArgChange: true,
+    }
+  );
   const [subcategory, setSubcategory] = useState({
     _id: "",
     name: "",
@@ -94,6 +104,17 @@ export default function Admin() {
                   pagination
                   selectableRowsHighlight
                   handleEdit={handleEdit}
+                  paginationTotalRows={data?.total || 0}
+                  paginationPerPage={10}
+                  paginationServer
+                  onChangePage={(page) => {
+                    setPage(page);
+                  }}
+                  onChangeRowsPerPage={(perPage, page) => {
+                    setPage(page);
+                    setPerPage(perPage);
+                  }}
+                  progressPending={isLoading}
                 />
               </div>
             </div>

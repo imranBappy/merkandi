@@ -1,7 +1,5 @@
-import Link from "next/link";
 import React, { useState } from "react";
 import Horizontal from "./Horizontal";
-import { BiSolidTachometer } from "react-icons/bi";
 import { useGetCategoriesQuery } from "@/redux/features/category/categoryApi";
 
 function NevBer() {
@@ -36,12 +34,6 @@ function NevBer() {
               <p className="text-sm font-normal mb-4">
                 Wholesale trading without limits
               </p>
-              <Link
-                href="/dashboard"
-                className="bg-[#f29d00] hover:bg-[#cc8400] text-white font-bold  px-4 py-2  text-base"
-              >
-                Add offer +
-              </Link>
             </div>
             <button onClick={() => setShowNev1(!showNev1)} className="px-2">
               <svg

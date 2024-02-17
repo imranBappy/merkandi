@@ -263,14 +263,6 @@ const Header = () => {
                     Top offers
                   </Link>
                 </div>
-                <div className="bg-m p-2">
-                  <Link
-                    href="/dashboard"
-                    className="flex items-center bg-y hover:bg-yy text-white px-4 py-2 font-bold text-base"
-                  >
-                    Add offer +
-                  </Link>
-                </div>
               </div>
             </div>
           </div>

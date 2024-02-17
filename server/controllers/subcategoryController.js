@@ -3,6 +3,9 @@ const SubSubcategory = require("../models/Subcategories");
 
 exports.getSubcategories = async (req, res, next) => {
   try {
+    const { page, limit = 10 } = req.query;
+    const currentPage = parseInt(page) || 1;
+    const PER_PAGE = parseInt(limit);
     const subcategories = await SubSubcategory.find()
       .populate({
         path: "image",
@@ -11,9 +14,11 @@ exports.getSubcategories = async (req, res, next) => {
       .populate({
         path: "category",
         select: "name",
-      });
-
-    res.status(200).json({ success: true, data: subcategories });
+      })
+      .skip(PER_PAGE * currentPage - PER_PAGE)
+      .limit(PER_PAGE);
+    const total = await SubSubcategory.countDocuments();
+    res.status(200).json({ data: subcategories, total });
   } catch (error) {
     console.log(error);
     next(error);

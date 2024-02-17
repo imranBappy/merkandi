@@ -2,10 +2,9 @@ const Category = require("../models/Category");
 
 exports.getCategories = async (req, res, next) => {
   try {
-    const { page } = req.query;
+    const { page, limit = 10 } = req.query;
     const currentPage = parseInt(page) || 1;
-
-    const PER_PAGE = 10;
+    const PER_PAGE = parseInt(limit);
     const categories = await Category.find({})
       .populate({
         path: "image",

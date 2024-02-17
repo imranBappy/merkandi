@@ -1,11 +1,12 @@
 "use client";
+import PublicRoute from "@/components/PublicRoute/PublicRoute";
 import Questions from "@/components/Questions";
 import Register1 from "@/components/Register1";
 import Register2 from "@/components/Register2";
 
 export default function Register() {
   return (
-    <>
+    <PublicRoute>
       <div className="z-0 bg-[url('/images/bg-pricing.jpg')] bg-no-repeat bg-cover h-[400px] pt-8 relative flex flex-col items-center">
         <div className="bg-black opacity-70 absolute inset-0 z-0"></div>
         <h1 className="relative text-center text-3xl leading-10 font-bold text-white z-10">
@@ -71,6 +72,6 @@ export default function Register() {
       <div className="block md:hidden">
         <Register2 />
       </div>
-    </>
+    </PublicRoute>
   );
 }

@@ -12,7 +12,8 @@ export const SubcategoryApi = apiSlice.injectEndpoints({
       invalidatesTags: ["Subcategory"],
     }),
     getSubcategories: builder.query({
-      query: () => url,
+      query: ({ page = 1, limit = 10 } = { page: 1, limit: 10 }) =>
+        `${url}?page=${page}&limit=${limit}`,
       providesTags: ["Subcategory"],
     }),
     getSubcategory: builder.query({
