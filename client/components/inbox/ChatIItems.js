@@ -55,7 +55,10 @@ export default function ChatItems() {
       .map((conversation) => {
         const { message, updatedAt, participant, createdBy } = conversation;
         const partnerInfo = getPartnerInfo([participant, createdBy], myEmail);
-        const { name, email: partnerEmail } = partnerInfo;
+        const { name, email: partnerEmail } = partnerInfo || {
+          email: "premium@lot24.ma",
+        };
+        console.log({ partnerEmail });
         return (
           <li key={conversation._id}>
             <Link href={`/dashboard/messenger/${conversation._id}`}>

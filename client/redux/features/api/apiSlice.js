@@ -1,6 +1,7 @@
 "use client";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const baseUrl = process.env.NEXT_PUBLIC_HOST;
+// const baseUrl = process.env.NEXT_PUBLIC_HOST;
+const baseUrl = "http://localhost:5000";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({

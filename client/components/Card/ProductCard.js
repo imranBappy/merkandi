@@ -7,7 +7,7 @@ function ProductCard({ product }) {
 
   return (
     <Link
-      href={`/product/${product._id}`}
+      href={`/${product._id}`}
       className="border hover:shadow-lg group bg-white block"
     >
       <div className="relative">
